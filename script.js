@@ -1,1 +1,1 @@
-console.log('Add validation!');
+console.log('Add validation!')

@@ -6,8 +6,6 @@ function qs(selector){
     return document.querySelectorAll(selector)
 }
 
-let field = q('#field')
-let input = q('#input')
 
 class Field {
     constructor(input) {
@@ -18,6 +16,9 @@ class Field {
     }
     isNumber() {
     return !isNaN(this.input)
+    }
+    isCvv() {
+    return this.input.length === 3;   
     }
 }
 
@@ -32,10 +33,21 @@ let daysValue= q("#days").value
 
 let daysField = new Field (daysValue)
 
+let cvvValue = q("#cvv").value
+
+let cvvField= new Field (cvvValue)
+
 nameField.validateField()
 
-console.log(daysField.validateField())
-console.log(daysField.isNumber())
+daysField.validateField()
+
+daysField.isNumber()
+
+console.log(cvvField.validateField())
+
+console.log(cvvField.isNumber())
+
+console.log(cvvField.isCvv())
 
 })
 

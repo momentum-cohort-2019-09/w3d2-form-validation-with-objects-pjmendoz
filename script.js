@@ -12,13 +12,16 @@ class Field {
         this.input = input;
     }
     validateField() {
-    return this.input !== "";
+        return this.input !== "";
     }
     isNumber() {
-    return !isNaN(this.input)
+        return !isNaN(this.input)
+    }
+    isDays(){
+        return this.input >= 1 && this.input <30; 
     }
     isCvv() {
-    return this.input.length === 3;   
+        return this.input.length === 3;   
     }
 }
 
@@ -39,15 +42,17 @@ let cvvField= new Field (cvvValue)
 
 nameField.validateField()
 
-daysField.validateField()
+console.log(daysField.validateField())
 
-daysField.isNumber()
+console.log(daysField.isNumber())
 
-console.log(cvvField.validateField())
+console.log(daysField.isDays())
 
-console.log(cvvField.isNumber())
+cvvField.validateField()
 
-console.log(cvvField.isCvv())
+cvvField.isNumber()
+
+cvvField.isCvv()
 
 })
 

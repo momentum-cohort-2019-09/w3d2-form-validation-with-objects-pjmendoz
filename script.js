@@ -23,6 +23,9 @@ class Field {
     isCvv() {
         return this.input.length === 3;   
     }
+    isCarYear () {
+        return this.input >= 1900 && this.input <2019;
+    }
 }
 
 q('#parking-form').addEventListener('submit', function(event) {
@@ -32,6 +35,10 @@ let nameValue = q("#name").value
 
 let nameField= new Field (nameValue)
 
+let carYearValue = q("#car-year").value
+
+let carYearField = new Field (carYearValue)
+
 let daysValue= q("#days").value
 
 let daysField = new Field (daysValue)
@@ -40,13 +47,22 @@ let cvvValue = q("#cvv").value
 
 let cvvField= new Field (cvvValue)
 
+
 nameField.validateField()
 
-console.log(daysField.validateField())
+console.log(carField.validateField())
 
-console.log(daysField.isNumber())
+carYearField.validateField()
 
-console.log(daysField.isDays())
+carYearField.isNumber()
+
+carYearField.isCarYear()
+
+daysField.validateField()
+
+daysField.isNumber()
+
+daysField.isDays()
 
 cvvField.validateField()
 

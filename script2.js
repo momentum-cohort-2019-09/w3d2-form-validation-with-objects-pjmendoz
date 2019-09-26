@@ -43,6 +43,8 @@ class Field {
         //Call the validator for that type of field
     }
 } 
+
+
 let nameField = new Field ("", "#name")
 
 class Validate {
@@ -59,9 +61,9 @@ if (!nameValidation.test(nameField.input)){
     return nameValidation.msg
 }
 
-// validateField() {
-//     return newFunction();
-// }
+    //  validateField() {
+    //      return newFunction();
+    // }
     // isNumber() {
     //     return !isNaN(this.input)
     // }
@@ -83,9 +85,9 @@ let nameValue = q("#name").value
 
 let nameField= new Field (nameValue)
 
-let carYearValue = q("#car-info").value
+let carValue = q("#car-info").value
 
-let carYearField = new Field (carYearValue)
+let carField = new Field (carYearValue)
 
 let daysValue= q("#days").value
 
@@ -98,13 +100,11 @@ let cvvField= new Field (cvvValue)
 
 nameField.validateField()
 
-console.log(carField.validateField())
+carField.validateField()
 
-carYearField.validateField()
+carField.isNumber()
 
-carYearField.isNumber()
-
-carYearField.isCarYear()
+carField.isCarYear()
 
 daysField.validateField()
 

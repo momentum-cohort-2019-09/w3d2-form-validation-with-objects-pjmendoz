@@ -1,4 +1,4 @@
-class Validation {
+class Validate {
     constuctor (test, errorMsg) {
         this.test = test
         this.errorMsg = errorMsg || 'is invalid'
@@ -38,8 +38,7 @@ class Field {
         this.inputDiv.classList.remove('input-valid')
     }
     getValue() {
-        const input = this.inputDiv.querySelector('input, select, textarea')
-        const value = input.value
+        const value = inputDiv.value
         return value
     }
     validate() {
@@ -80,17 +79,6 @@ class Form {
     }
 }
 
-class parkingForm {
-    constructor (name, carInfo, startDate, days, cc, cvv, expiration) {
-    this.name = name
-    this.carInfo = carInfo
-    this.startDate = startDate
-    this.days = days
-    this.cc = cc
-    this.cvv = cvv
-    this.expiration = expiration
-    }
-}
 
 const presenceValidation = new Validation(value => !!value, 'must not be blank')
 const nowOrFutureValidation = new Validation(function (dateStrToTest) {
@@ -105,24 +93,17 @@ const nowOrFutureValidation = new Validation(function (dateStrToTest) {
     return dateToTest >= now
 }, 'must be today or in the future')
 
-const daysOneThroughThirty = new Validation (function (){
-    if (!days || isNaN(days) || days > 30) {
-        return false
-    } else {
-        return true
-    }
-})
 
 let nameField = new Field(document.querySelector('#name'), [presenceValidation])
 let carInfoField = new Field(document.querySelector('#car-info'), [presenceValidation])
 let startDateField = new Field(document.querySelector('#start-date'), [presenceValidation,nowOrFutureValidation])
-let daysField = new Field(document.querySelector('#days'))
-let form = new Form (document.querySelector('#parking-form'), [nameField, startDateField])
+// let daysField = new Field(document.querySelector('#days'))
+// let form = new Form (document.querySelector('#parking-form'), [nameField, startDateField])
 
 document.querySelector('#submit-form').addEventListener('submit', (event)) => {
     event.preventDefault ()
     if (Form.validate()) {
-        let parkingForm = new parkingForm(nameField.getValue(), carInfoField.getValue(),startDateField.getValue(), daysField.getValue())
+        let  = new parkingForm(nameField.getValue(), carInfoField.getValue(),startDateField.getValue(), daysField.getValue())
         document.querySelector('#parking-form').appendChild(parkingForm.toDOMNode())
     }
 }

@@ -114,14 +114,16 @@ const daysOneThroughThirty = new Validation (function (){
 })
 
 let nameField = new Field(document.querySelector('#name'), [presenceValidation])
-let carInfo = new Field(document.querySelector('#car-info'), [presenceValidation])
+let carInfoField = new Field(document.querySelector('#car-info'), [presenceValidation])
 let startDateField = new Field(document.querySelector('#start-date'), [presenceValidation,nowOrFutureValidation])
+let daysField = new Field(document.querySelector('#days'))
 let form = new Form (document.querySelector('#parking-form'), [nameField, startDateField])
 
 document.querySelector('#submit-form').addEventListener('submit', (event)) => {
     event.preventDefault ()
     if (Form.validate()) {
-        let parkingForm = new ()
+        let parkingForm = new parkingForm(nameField.getValue(), carInfoField.getValue(),startDateField.getValue(), daysField.getValue())
+        document.querySelector('#parking-form').appendChild(parkingForm.toDOMNode())
     }
 }
 
